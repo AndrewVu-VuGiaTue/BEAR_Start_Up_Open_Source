@@ -8,8 +8,10 @@ const router = express.Router();
 router.post("/ingest", ingest);
 
 // App lấy dữ liệu: cần auth
-router.get("/latest/:userId?", protect, latest);
-router.get("/timeseries/:userId?", protect, timeseries);
+router.get("/latest", protect, latest);
+router.get("/latest/:userId", protect, latest);
+router.get("/timeseries", protect, timeseries);
+router.get("/timeseries/:userId", protect, timeseries);
 
 // Healthcheck (public)
 router.get("/healthcheck", healthcheck);
