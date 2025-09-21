@@ -1,6 +1,6 @@
 const express = require("express");
 const { protect } = require("../middleware/authMiddleware");
-const { ingest, latest, timeseries } = require("../controllers/healthController");
+const { ingest, latest, timeseries, healthcheck } = require("../controllers/healthController");
 
 const router = express.Router();
 
@@ -10,6 +10,9 @@ router.post("/ingest", ingest);
 // App lấy dữ liệu: cần auth
 router.get("/latest/:userId?", protect, latest);
 router.get("/timeseries/:userId?", protect, timeseries);
+
+// Healthcheck (public)
+router.get("/healthcheck", healthcheck);
 
 module.exports = router;
 

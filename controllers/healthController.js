@@ -73,4 +73,10 @@ const timeseries = async (req, res) => {
 };
 
 module.exports = { ingest, latest, timeseries };
+// Healthcheck
+const healthcheck = async (req, res) => {
+  res.json({ status: "ok", uptime: process.uptime(), timestamp: new Date().toISOString() });
+};
+
+module.exports = { ingest, latest, timeseries, healthcheck };
 
